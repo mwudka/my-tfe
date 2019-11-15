@@ -11,10 +11,10 @@ terraform {
 
 resource "random_id" "dummy-value" {
     byte_length = 10
-    count = 106
+    count = 200
 }
 
-# data "http" "slow-http-requests" {
-#     count = 1
-#     url = "https://httpbin.org/delay/10"
-# }
+data "http" "slow-http-requests" {
+    count = 5
+    url = "https://httpbin.org/delay/10"
+}
