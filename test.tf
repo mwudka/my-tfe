@@ -9,8 +9,10 @@
 #   }
 # }
 
-resource "null" "local-exec" {
-  provisioner "local-exec" {
-    command = "tar -xvzf ${path.module}/etc-symlink.tar.gz ${path.module}/etc-symlink"
-  }
-}
+# resource 
+
+# resource "null" "local-exec" {
+#   provisioner "local-exec" {
+#     command = "tar -xvzf ${path.module}/etc-symlink.tar.gz ${path.module}/etc-symlink"
+#   }
+# }
