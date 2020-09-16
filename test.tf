@@ -1,5 +1,5 @@
 //--------------------------------------------------------------------
 // Modules
 resource "random_id" "server" {
-  byte_length = 69
+  byte_length = 70
 }
