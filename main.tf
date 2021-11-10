@@ -1,14 +1,22 @@
 terraform {
   required_providers {
     random = {
-      source = "hashicorp/random"
+      source  = "hashicorp/random"
       version = "3.1.0"
     }
     http = {
-      source = "hashicorp/http"
+      source  = "hashicorp/http"
       version = "2.1.0"
     }
+    environment = {
+      source  = "EppO/environment"
+      version = "1.1.0"
+    }
   }
+}
+
+variable "my-var" {
+  default = "default-value"
 }
 
 data "http" "random" {
@@ -16,11 +24,11 @@ data "http" "random" {
 
 }
 resource "random_id" "server" {
-    byte_length = 8
+  byte_length = 8
 
-    keepers = {
-      "uuid" = data.http.random.body
-    }
+  keepers = {
+    "uuid" = data.http.random.body
+  }
 }
 
 output "random_hex" {
@@ -29,4 +37,14 @@ output "random_hex" {
 
 output "random_http_uuid" {
   value = data.http.random.body
+}
+
+output "var-value" {
+  value = var.my-var
+}
+
+data "environment_variables" "all" {}
+
+output "env-vars" {
+  value = data.environment_variables.all.items
 }
