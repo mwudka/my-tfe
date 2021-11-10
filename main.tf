@@ -15,10 +15,16 @@ terraform {
   }
 }
 
-variable "my-var" {
-  default = "default-value"
+variable "pet_name_length" {
+  default = "default pet_name_length"
+}
+variable "example" {
+  default = "default example"
 }
 
+variable "example_var" {
+  default = "default hcl_example_var"
+}
 data "http" "random" {
   url = "http://www.randomnumberapi.com/api/v1.0/uuid"
 
@@ -39,8 +45,17 @@ output "random_http_uuid" {
   value = data.http.random.body
 }
 
-output "var-value" {
-  value = var.my-var
+output "pet_name_length" {
+  value = var.pet_name_length
+}
+
+output "example" {
+  value = var.example
+  sensitive = true
+}
+
+output "hcl_example_var" {
+  value = var.example_var
 }
 
 data "environment_variables" "all" {}
