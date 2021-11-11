@@ -26,14 +26,18 @@ variable "example_var" {
   default = "default hcl_example_var"
 }
 data "http" "random" {
-  url = "http://www.randomnumberapi.com/api/v1.0/uuid"
-
+  url = "https://app.terraform.io/app/organizations"
 }
+
+locals {
+  random_uuid = data.http.random.response_headers["X-Request-Id"]
+}
+
 resource "random_id" "server" {
   byte_length = 8
 
   keepers = {
-    "uuid" = data.http.random.body
+    "uuid" = local.random_uuid
   }
 }
 
@@ -42,7 +46,7 @@ output "random_hex" {
 }
 
 output "random_http_uuid" {
-  value = data.http.random.body
+  value = local.random_uuid
 }
 
 output "pet_name_length" {
@@ -50,7 +54,7 @@ output "pet_name_length" {
 }
 
 output "example" {
-  value = var.example
+  value     = var.example
   sensitive = true
 }
 
