@@ -16,14 +16,14 @@ terraform {
 }
 
 variable "pet_name_length" {
-  default = "default pet_name_length"
+  //default = "default pet_name_length"
 }
 variable "example" {
   default = "default example"
 }
 
 variable "example_var" {
-  default = "default hcl_example_var"
+  //default = "default hcl_example_var"
 }
 data "http" "random" {
   url = "https://app.terraform.io/app/organizations"
