@@ -22,6 +22,22 @@ variable "example" {
   default = "default example"
 }
 
+variable "no_default_no_null" {
+
+}
+
+variable "no_default_null" {
+  nullable = true
+}
+
+output "no_default_no_null" {
+  value = var.no_default_no_null
+}
+
+output "no_default_null" {
+  value = var.no_default_null
+}
+
 variable "example_var" {
   default = "default hcl_example_var"
 }
